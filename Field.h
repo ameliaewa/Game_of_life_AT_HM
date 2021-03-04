@@ -1,9 +1,15 @@
-#include <stdbool.h>
+typedef enum Cell {
+    DEAD,
+    ALIVE,
+} Cell;
 
 typedef struct Field {
     unsigned int width;
     unsigned int height;
-    bool** cells;
+    Cell** cells;
+    Cell** tmpCells;
 } Field;
 
 Field* alloc_field(int, int);
+void swap_cells(Field*);
+void dealloc_field(Field*);

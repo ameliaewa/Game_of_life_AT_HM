@@ -2,5 +2,5 @@
 Informatyka Stosowana 2020/21 Sem2, Wydział Elektryczny
 
 # Autorzy:
-Amelia Tabor
+Amelia Tabor\
 Hubert Mazur
