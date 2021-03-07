@@ -1,8 +1,5 @@
 #include "Field.h"
-
-#define NEIGHBOURS 8 // zalezy od typu sasiedztwa
-int shift[8][2] = { {-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1} }; // moore
-// int shift[4][2] = { {-1,0},{0,-1},{0,1},{1,0} }; // neumann
+#include "game.h"
 
 Cell will_i_survive(Field* field, const int x, const int y) {
     // count alive neighbours
@@ -24,6 +21,8 @@ void next_gen(Field* field) {
     for (int j = 0; j < field->width; ++j)
         for (int i = 0; i < field->height; ++i)
             field->tmpCells[i][j] = will_i_survive(field, i, j);
-    swap_fields(field);
-    // UNFINISHED
+    swap_cells(field);
+   
+   
+    // UNFINISHED (?)
 }

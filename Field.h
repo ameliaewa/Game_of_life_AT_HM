@@ -1,3 +1,6 @@
+#ifndef _FIELD_H_
+#define _FIELD_H_ 
+
 typedef enum Cell {
     DEAD,
     ALIVE,
@@ -13,3 +16,4 @@ typedef struct Field {
 Field* alloc_field(int, int);
 void swap_cells(Field*);
 void dealloc_field(Field*);
+#endif
