@@ -1,6 +1,9 @@
 #include "Field.h"
 #include "game.h"
 
+#define NEIGHBOURS 8 // zalezy od typu sasiedztwa
+int shift[8][2] = { {-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1} }; // moore
+
 Cell will_i_survive(Field* field, const int x, const int y) {
     // count alive neighbours
     int alive_neighbours = 0;
@@ -22,7 +25,4 @@ void next_gen(Field* field) {
         for (int i = 0; i < field->height; ++i)
             field->tmpCells[i][j] = will_i_survive(field, i, j);
     swap_cells(field);
-   
-   
-    // UNFINISHED (?)
 }

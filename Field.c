@@ -21,5 +21,11 @@ void swap_cells(Field* field) {
 }
 
 void dealloc_field(Field* field) {
-
+    for (int i = 0; i < field->height; ++i) {
+        free(field->cells[i]);
+        free(field->tmpCells[i]);
+    }
+    free(field->cells);
+    free(field->tmpCells);
+    free(field);
 }
