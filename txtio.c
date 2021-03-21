@@ -14,3 +14,14 @@ Field* init_from_txt(char* file_path) {
     fclose(file);
     return field;
 }
+
+void save_to_txt(Field* field, char* file_path) {
+    FILE* file = fopen(file_path, "w");
+    fprintf(file, "%d %d\n", field->height, field->width);
+    for (int i = 0; i < field->height; i++) {
+        for (int j = 0; j < field->width; j++)
+            fprintf(file, "%d ", field->cells[i][j]);
+        fprintf(file, "\n");
+    }
+    fclose(file);
+}
