@@ -1,22 +1,19 @@
 #include "pbmgen.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 #define BUFF_SIZE 20
+#define PIXEL_SIZE 10
 
 void create_frame(Field* field) {
     static int frameNo = 0;
-    static char frameNoStr[BUFF_SIZE] = { 0 };
+    static char buffer[BUFF_SIZE] = { 0 };
 
-    // itoa(frameNo, frameNoStr, 10);
-    sprintf(frameNoStr, "%d", frameNo);
-    strcat(frameNoStr, ".pbm");
-    FILE* file = fopen(frameNoStr, "w");
-    fprintf(file, "P1\n%d %d\n", field->width, field->height);
-    for (int y = 0; y < field->height; ++y) {
-        for (int x = 0; x < field->width; ++x)
-            fprintf(file, "%d ", field->cells[y][x] == ALIVE ? 1 : 0);
+    sprintf(buffer, "out/%d.pbm", frameNo);
+    FILE* file = fopen(buffer, "w");
+    fprintf(file, "P1\n%d %d\n", field->width * PIXEL_SIZE, field->height * PIXEL_SIZE);
+    for (int y = 0; y < field->height * PIXEL_SIZE; ++y) {
+        for (int x = 0; x < field->width * PIXEL_SIZE; ++x)
+            fprintf(file, "%d ", field->cells[y / PIXEL_SIZE][x / PIXEL_SIZE] == ALIVE ? 1 : 0);
         fputs("\n", file);
     }
 

@@ -1,5 +1,6 @@
 GameOfLife: game.o Field.o main.o txtio.o pbmgen.o
 	cc game.o Field.o main.o txtio.o pbmgen.o -o GameOfLife.out -Wall -pedantic
+	mkdir out
 
 game.o: game.c game.h
 	cc -c game.c
@@ -18,4 +19,4 @@ pbmgen.o: pbmgen.c pbmgen.h
 
 .PHONY:
 clean:
-	rm *.o *.out *.pbm
+	rm *.o *.out out/*.pbm
